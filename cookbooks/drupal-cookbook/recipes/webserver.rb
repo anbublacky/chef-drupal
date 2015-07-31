@@ -16,8 +16,8 @@
 include_recipe 'apache2::default'
 
 # Enable access compatibility with Apache 2.2
-link '/etc/httpd/mods-available/access_compat.load' do
-  to '/etc/httpd/mods-enabled/access_compat.load'
+link '/etc/apache2/mods-available/access_compat.load' do
+  to '/etc/apache2/mods-enabled/access_compat.load'
   mode '0755'
   link_type :symbolic
 end
@@ -40,7 +40,7 @@ iptables_rule 'firewall'
 include_recipe 'apache2::mod_php5'
 
 # Install php-mysql.
-package 'php-mysql' do
-  	action :install
-  	notifies :restart, 'service[apache2]'
-end
+# package 'php-mysql' do
+#   	action :install
+#   	notifies :restart, 'service[apache2]'
+# end
